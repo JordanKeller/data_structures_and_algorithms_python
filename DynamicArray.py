@@ -38,33 +38,33 @@ class DynamicArray:
 
 
 	def push(self, val):
-		# Enlarges array to twice its original size
-		# when self._size == self._capacity.
+		"""Adds object to the end of the array.
+		Enlarges array to twice its original size
+		when self._size == self._capacity."""
 
-		if self._size < self._capacity:
-			self._data[self._size] = val
-			self._size += 1
+		if self._size == self._capacity:
 
-		else:
-			self.enlarge()
+			self._enlarge()
 
-			self._data[self._size] = val
-			self._size += 1
+		self._data[self._size] = val
+		self._size += 1
 
 	def pop(self):
-		# Shrinks array to half its original size when 
-		# self._size <= (1/4)self._capacity.
+		"""Removes and returns last element in the array.
+		Shrinks array to half its original size when 
+		self._size <= (1/4)self._capacity."""
 
 		if self._size <= (1/4) * self._capacity:
 
-			self.shrink()
+			self._shrink()
 
 		result = self._data[self._size - 1]
 		self._data[self._size - 1] = None
 		self._size -= 1
 		return result
 
-	def enlarge(self):
+	def _enlarge(self):
+		"""Utility function; doubles array capacity."""
 
 		temp = [None] * (2 * self._capacity)
 
@@ -75,7 +75,8 @@ class DynamicArray:
 		self._capacity *= 2
 
 
-	def shrink(self):
+	def _shrink(self):
+		"""Utility function; halves array capacity."""
 
 		temp = [None] * int(((1/2) * self._capacity))
 
