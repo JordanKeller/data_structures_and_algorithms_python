@@ -1,7 +1,5 @@
-import math
-
 class DynamicArray:
-	"""Simple dynamic array implementation in Python"""
+	"""Dynamic array implementation in Python"""
 
 	def __init__(self):
 
@@ -79,39 +77,39 @@ class DynamicArray:
 
 	def shrink(self):
 
-		temp = [None] * math.ceil(((1/2) * self._capacity))
+		temp = [None] * int(((1/2) * self._capacity))
 
 		for i in range(self._size):
 			temp[i] = self._data[i]
 
 		self._data = temp
-		self._capacity = math.ceil((1/2) * self._capacity)
+		self._capacity = int((1/2) * self._capacity)
 
 
 
-d = DynamicArray()
+#d = DynamicArray()
 
 #print(len(d))
 #print(d.is_empty())
 
-d.push(3)
-
-d.push(4)
-
-d.push(5)
+#d.push(3)
+#d.push(4)
+#d.push(5)
 
 #print(d[2])
 
 #print(len(d))
 #print(d.is_empty())
 
-d[2] = 6
+#d[2] = 6
 
 #print(d[2])
+
+#for x in d:
+#	print(x)
 
 #for i in range(len(d)):
 #	print(d.pop())
-#	print(d._capacity)
 
 #print(d.is_empty())
 
