@@ -1,4 +1,4 @@
-lsclass DynamicArray:
+class DynamicArray:
 	"""Dynamic array implementation in Python"""
 
 	def __init__(self):
