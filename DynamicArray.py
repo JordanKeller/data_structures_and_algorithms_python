@@ -63,6 +63,34 @@ class DynamicArray:
 		self._size -= 1
 		return result
 
+	def insert(self, k, val):
+		"""Insert element with value val at the k-th index."""
+
+		if k >= self._size:
+			raise Exception('Index out of range.')
+
+		#insert the value onto the end of the array
+		self.push(val)
+
+		#swap repeatedly to move the element to the k-th index
+		for j in range(self._size - k - 1):
+			idx = self._size - 1 - j
+			self._data[idx], self._data[idx - 1] = self._data[idx - 1], self._data[idx]
+
+
+	def delete(self, k):
+		"""Removes the element at the k-th index, returning
+		the same."""
+
+		if k >= self._size:
+			raise Exception('Index out of range.')
+
+		# swap the element to the end of the array
+		for j in range(k, self._size - 1):
+			self._data[j], self._data[j + 1] = self._data[j + 1], self._data[j]
+
+		return self.pop()
+
 	def _enlarge(self):
 		"""Utility function; doubles array capacity."""
 
@@ -97,7 +125,12 @@ class DynamicArray:
 #d.push(4)
 #d.push(5)
 
-#print(d[2])
+#d.insert(2, 17)
+
+#d.delete(1)
+
+#for x in d:
+#	print(x)
 
 #print(len(d))
 #print(d.is_empty())
